@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int d_2[50][50],d_3[50][50][50],r1,c1,r2,c2,d1;
+    int max2=0,max3=0,sum2,sum3,min2=2147483647,min3=2147483647;
+    int i=0,j=0,k=0,i2_1,i2_2,j2_1,j2_2,i3_1,i3_2,j3_1,j3_2,k3_1,k3_2;
+    cout<<"enter the number of rows in the 2d array\n--> ";
+    cin>>r1;
+    cout<<"enter the number of columns in the 2d array\n--> ";
+    cin>>c1;
+    cout<<"\nenter elements of the 2d array : \n";
+    for(i = 0; i < r1;i++){
+        for (j = 0; j < c1;j++){
+            cout<<"enter the ( "<<i + 1<< "," << j + 1 <<" ) \n : ";
+            cin>>d_2[i][j];
+        }
+    }
+    cout<<"\n\nenter the number of rows in the 3d array\n--> ";
+    cin>>r2;
+    cout<<"enter the number of columns in the 3d array\n--> ";
+    cin>>c2;
+    cout<<"enter the number of depths in the 3d array\n--> ";
+    cin>>d1;
+    cout<<"\n\nenter elements of the 3d array : \n";
+    for(i = 0; i < r2;i++){
+        for (j = 0; j < c2;j++){
+            for (k = 0; k < d1;k++){
+                cout<<"enter the ("<<i + 1<< "," << j + 1<< "," << k + 1<<" ) \n : ";
+                cin>>d_3[i][j][k];
+            }
+        }
+    }
+    for(i = 0; i < r2;i++){
+        for (j = 0; j < c2;j++){
+            if (d_2[i][j] > max2){
+                max2 = d_2[i][j];
+                i2_1 = i;
+                j2_1 = j;
+            }
+            if (d_2[i][j] < min2){
+                min2 = d_2[i][j];
+                i2_2 = i;
+                j2_2 = j;
+            }
+            sum2 += d_2[i][j];
+        }
+    }
+    for(i = 0; i < r2;i++){
+        for (j = 0; j < c2;j++){
+            for (k = 0; k < d1;k++){
+                if (d_3[i][j][k] > max3){
+                    max3 = d_3[i][j][k];
+                    i3_1 = i;
+                    j3_1 = j;
+                    k3_1 = k;
+                }
+                if (d_3[i][j][k] < min3){
+                    min3 = d_3[i][j][k];
+                    i3_2 = i;
+                    j3_2 = j;
+                    k3_2 = k;
+                }
+                sum3 += d_3[i][j][k];
+            }
+        }
+    }
+    cout<<"\n\n  the largest  element and the 2D array is the  ( "<<i2_1 + 1<< "," << j2_1 + 1 <<" )    --> "<<max2<<endl;
+    cout<<"  the smallest element and the 2D array is the  ( "<<i2_2 + 1<< "," << j2_2 + 1 <<" )    --> "<<min2<<endl;
+    cout<<"  the largest  element and the 3D array is the  ( "<<i3_1 + 1<< "," << j3_1 + 1 << "," << k3_1 + 1<<" )  --> "<<max3<<endl;
+    cout<<"  the smallest element and the 3D array is the  ( "<<i3_2 + 1<< "," << j3_2 + 1 << "," << k3_2 + 1<<" )  --> "<<min3<<endl;
+    cout<<"\n\nthe sum of the elements in the 2d array is ("<<sum2<<")\n";
+    cout<<"the sum of the element in the 3d array is ("<<sum3<<")";
+}
