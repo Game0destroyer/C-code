@@ -1,0 +1,135 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int main() {
+    
+    string n[2],N;
+    int age[2], money, b_money,started_with_money,bet, dice, g, m_g,q,w,p=1,i=0,i2=0,A=0;
+    int& sum = b_money,S_W_M = started_with_money;
+    int *T;
+    T = &b_money;
+    srand(time(0));
+    cout<<"welcom to Luck is it your first time here or do you already have an acount?\n{1.sign up // 2.log in} * log in is for VIP only*\n-->";
+    cin>>q;
+    cin.ignore();
+    if (q == 1){
+        cout<< "Please enter your name: ";
+        for (i = 0;i <= 2;i++){
+            if(n[i].empty()){
+                getline(cin, n[i]);
+                i2 = i;
+                break;
+               
+            }
+            if (i == 2){
+                cout<<"ther is no space to make an account please contact the manger";
+                exit(0);
+            }
+        }
+        cout<< "Welcome, "<<n[i2]<<" to luck, Enter your age to continue further : ";
+        cin>>age[i2];
+        cin.ignore();
+        if(age[i2] < 18){
+            cout<<"you are under the age of 18 an can't play"<<endl;
+            exit(0);
+        }
+        else{
+            cout<<"welcom to luck you are ready to play"<<endl;
+        }
+        cout<<"how much do you want to convert to tokens (* 1$ = 5 tokens*)\n-->";
+        cin>>money;
+        cin.ignore();
+        b_money = (money * 5);
+    }
+    if (q == 2){
+        cout<< "Please enter your name: ";
+        getline(cin ,N);
+        for (i = 0;i <= 2;i++){
+            
+            if("admin faris" == N){
+                i2 = i;
+                A = 1;
+                break;
+            }
+            if (i == 2){
+                cout<<"ther is no account with that name please contact the manger or Try again";
+                exit(0);
+            }
+        }
+        cout<< "\nWelcome, "<<n[i2]<<" your age is ("<<age[i2]<<") is that correct\n{1.yes // 2.No}\n-->";
+        cin>>w;
+        cin.ignore();
+        if (w == 1){
+            if(age[i2] < 18){
+                cout<<"you are under the age of 18 an can't play"<<endl;
+                exit(0);
+            }
+            else{
+                cout<<"welcom to luck you are ready to play"<<endl;
+            }
+        }
+        if (w == 2){
+            cout<<"Enter your age to continue further : ";
+            cin>>age[i2];
+            if(age[i2] > 3141){
+                cout<<"you are under the age of 18 an can't play"<<endl;
+                exit(0);
+            }
+            else{
+                cout<<"welcom to luck you are ready to play"<<endl;
+            }
+        }
+        cout<<"thank you manger for visiting us you have infinit tokens \n";
+        b_money = 2147483647;
+    }
+    while ((b_money != 0) && (p == 1)) {
+        if (n[i2] == "admin faris"){
+            b_money = 2147483647;
+        }
+        srand(time(0));
+        do{
+            cout<<"\nenter amount of tokens to bet you have "<<b_money<<"\n-->";
+            cin>>bet;
+            if (bet > b_money) {
+                cout<<"you can't bet more than the tokens you have";
+            }
+        }
+        while (bet > b_money);
+        cout<<"here in luck we have custom difficulty"<<endl;
+        cout<<"choose your difficulty (* number must be dividabl by 5*)\nthe more difficult it is the more tokens you get\n-->";
+        cin>>m_g;
+        if ((m_g > 0) && (m_g % 5 == 0)){
+            cout<<"choose a number between 1 and "<<m_g<<"\n-->";
+            cin>>g;
+            dice = (rand() % m_g) + 1;
+            if(dice == g){
+                cout<<"\nHurray You Won " << bet *(((m_g / 5) + 1));
+                sum +=bet * (((m_g / 5) + 1));
+            }
+            else{
+                cout<<"you lost the number was "<<dice<<endl;
+                sum -= bet;
+            }
+        }
+        else{
+            cout<<"the number MUST be dividable by FIVE (5)\n"<<endl;
+        }
+        if(S_W_M <= b_money){
+            cout<<"you started with ("<<S_W_M<<") tokens and now you have ("<<*T<<") tokens\nyou profited {("<<float(S_W_M / b_money) * 100<<")%} of the tokens you started with";
+        }
+        else{
+            cout<<"you started with ("<<S_W_M<<") tokens and now you have ("<<*T<<") tokens\nyou lost {("<<float(S_W_M / b_money) * 100<<")%} of the tokens you started with";
+        }
+        cout<<"the  number of tokens you have is ("<<*T<<") do you want to continue\n{1.Yes // 2.No}\n-->";
+        cin>>p;
+    }
+    if(b_money == 0){
+        cout<<"you don't have any more tokens\n\n";
+    }
+    else{
+        cout<<"sorry to see you leave\n\n";
+    }
+    cout<<"if ther is any errors please contact me on \nhttps://github.com/Game0destroyer/C-code\n and publish an issue then I can help";
+}
