@@ -1,0 +1,110 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+void sum_2( float* ,int* ,int*);
+float sum(float* , int*,int);
+int main(){
+/* you can add or remove products */ 
+    int num[10],n[10],q=0,w,Y_N=2;
+    float pric[10]={ 1 , 5 , 3 , 1 , 2 };
+    while ( Y_N == 2){
+        cout<<"enter the number of the product\n we have only 5 products\n\n{1.milk - 2.cake - 3.butter - 4.bread - 5.noddle}\n-->";
+        cin>>q;
+        if(q == 1){
+            cout<<"the price of the product is "<<pric[q - 1]<<endl;
+            cout<<"would you like to buy the product (milk)\n{1.Yes / 2.No}\n-->";
+            cin>>w;
+            if (w == 1){
+                cout<<"how many of thse product do yo want to buy\n-->";
+                cin>>n[q - 1];
+                num[q - 1] = 1;
+            }
+        }
+        if(q == 2){
+            cout<<"the price of the product is "<<pric[q - 1]<<endl;
+            cout<<"would you like to buy the product (cake)\n{1.Yes / 2.No}\n-->";
+            cin>>w;
+            if (w == 1){
+                cout<<"how many of thse product do yo want to buy\n-->";
+                cin>>n[q - 1];
+                num[q - 1] = 1;
+            }
+        }
+        if(q == 3){
+            cout<<"the price of the product is "<<pric[q - 1]<<endl;
+            cout<<"would you like to buy the product (butter)\n{1.Yes / 2.No}\n-->";
+            cin>>w;
+            if (w == 1){
+                cout<<"how many of thse product do yo want to buy\n-->";
+                cin>>n[q - 1];
+                num[q - 1] = 1;
+            }
+        }
+        if(q == 4){
+            cout<<"the price of the product is "<<pric[q - 1]<<endl;
+            cout<<"would you like to buy the product (bread)\n{1.Yes / 2.No}\n-->";
+            cin>>w;
+            if (w == 1){
+                cout<<"how many of thse product do yo want to buy\n-->";
+                cin>>n[q - 1];
+                num[q - 1] = 1;
+            }
+        }
+        if(q == 5){
+            cout<<"the price of the product is "<<pric[q - 1]<<endl;
+            cout<<"would you like to buy the product (noddle)\n{1.Yes / 2.No}\n-->";
+            cin>>w;
+            if (w == 1){
+                cout<<"how many of thise product do yo want to buy\n-->";
+                cin>>n[q - 1];
+                num[q - 1] = 5;
+            }
+        }
+        cout<<"is that all\n{1.Yes / 2.No}\n-->";
+        cin>>Y_N;
+    }
+    sum_2(pric ,num ,n);
+}
+void sum_2(float* p ,int* o,int* i){
+    float equal=0,numbe[10];
+    int k=0;
+    for (k = 0;k < 5;k++){
+            
+            numbe[k]= sum(p,i,k);
+            if (*o+k == 1){
+                cout<<"you have bought "<<*i+k<<" bottles of milk ther total price is " <<numbe[k]<<endl;
+                equal += numbe[k];
+            }
+            if (*o+k == 2){
+                cout<<"you have bought "<<*i+k<<" cake ther total price is "<<numbe[k]<<endl;
+                equal += numbe[k];
+            }
+            if (*o+k == 3){
+                cout<<"you have bought "<<*i+k<<" egg ther total price is "<<numbe[k]<<endl;
+                equal += numbe[k];
+            }
+            if (*o+k == 4){
+                cout<<"you have bought "<<*i+k<<" loafs of bread ther total price is "<<numbe[k]<<endl;
+               equal += numbe[k];
+            }
+            if (*o+k == 5){
+                cout<<"you have bought "<<*i+k<<" bages of noddles ther total price is "<<numbe[k]<<endl;
+                equal += numbe[k];
+            }
+            *o++;
+
+    }
+    cout<<"the total bill equals "<<equal;
+    exit(0);
+    
+}
+float sum(float* a,int* s,int j){
+    int sm = 0,w;
+    w = s[j];
+    while (w > 0){
+        sm += a[j];
+        w--;
+    }
+    return sm;
+}
